@@ -25,8 +25,8 @@ public class AuthorizationFilter implements Filter {
 					"/index.xhtml",
 					"/register.xhtml",
 					"/login.xhtml",
-					".*/jsf.js.xhtml",
-					".*/jsf.css.xhtml");
+					".*\\.js.xhtml",
+					".*\\.css.xhtml");
 
 	@Inject
 	private AuthMb authMb;
