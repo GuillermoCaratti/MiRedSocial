@@ -23,21 +23,21 @@
 									<h:inputText label="Nombre" id="name"
 										 value="#{registrationMb.user.name}"
 										styleClass="form-control" />
-									<h:message for="name" styleClass="alert alert-error"/>
+									<h:message for="name" errorClass="alert alert-error"/>
 								</div>
 								<div class="form-group">
 									<label>Email</label>
 									<h:inputText label="Email" id="email"
 									    value="#{registrationMb.user.email}"
 										styleClass="form-control" />
-									<h:message for="email" styleClass="alert alert-error"/>
+									<h:message for="email" errorClass="alert alert-error"/>
 								</div>
 								<div class="form-group">
 									<label>Contraseña</label>
 									<h:inputSecret label="Contraseña" id="pass"
 										value="#{registrationMb.user.password}"
 										styleClass="form-control" />
-									<h:message for="pass" styleClass="alert alert-error" />
+									<h:message for="pass" errorClass="alert alert-error" />
 								</div>
 								<div class="form-group">
 									<label>Confirmar contraseña</label>

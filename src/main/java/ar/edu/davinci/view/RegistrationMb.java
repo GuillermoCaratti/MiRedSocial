@@ -33,6 +33,7 @@ public class RegistrationMb {
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			return "login?faces-redirect=true";
 		} catch (Exception e) {
+			e.printStackTrace();
 			FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Error interno", null);
 			FacesContext.getCurrentInstance().addMessage(null, msg);
 			return null;

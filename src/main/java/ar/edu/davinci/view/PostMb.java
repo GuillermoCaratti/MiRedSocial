@@ -6,6 +6,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import ar.edu.davinci.auth.AuthMb;
 import ar.edu.davinci.controller.PostController;
@@ -20,6 +22,8 @@ public class PostMb {
 	@Inject 
 	private PostController postCntl;
 	
+    @NotNull
+    @Size(min=2,max=255)
 	private String content;
 	
 	public void submitPost(){

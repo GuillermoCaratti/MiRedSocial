@@ -40,6 +40,10 @@ public class PostController {
 		q.setMaxResults(max);
 		return q.getResultList();
 	}
+
+	public Post byId(int id) {
+		return entityManager.find(Post.class, id);
+	}
 	
 	
 }
