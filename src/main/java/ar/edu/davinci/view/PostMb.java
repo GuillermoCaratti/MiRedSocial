@@ -6,11 +6,14 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.http.Part;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import ar.edu.davinci.auth.AuthMb;
+import ar.edu.davinci.controller.ImageController;
 import ar.edu.davinci.controller.PostController;
+import ar.edu.davinci.model.Image;
 import ar.edu.davinci.model.Post;
 
 @Named
@@ -22,13 +25,25 @@ public class PostMb {
 	@Inject 
 	private PostController postCntl;
 	
+	@Inject 
+	private ImageController imgCntl;
+	
+	
+	
+	private Part file;
+	
     @NotNull
     @Size(min=2,max=255)
 	private String content;
+  
 	
 	public void submitPost(){
 		try{
-			postCntl.addPost(authMb.getUser(), content);
+			Image img = null;
+			if(file != null){
+				img = imgCntl.upload(file);
+			}
+			postCntl.addPost(authMb.getUser(), content,img);
 			content = null;
 		} catch (Exception e){
 			e.printStackTrace();
@@ -65,6 +80,14 @@ public class PostMb {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public Part getFile() {
+		return file;
+	}
+
+	public void setFile(Part file) {
+		this.file = file;
 	}
 	
 }

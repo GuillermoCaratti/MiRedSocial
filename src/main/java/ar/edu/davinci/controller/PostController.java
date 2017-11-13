@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
+import ar.edu.davinci.model.Image;
 import ar.edu.davinci.model.Post;
 import ar.edu.davinci.model.User;
 
@@ -17,11 +18,12 @@ public class PostController {
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-	public void addPost(User user, String content){
+	public void addPost(User user, String content, Image img){
 		Post p = new Post();
 		p.setDate(new Date());
 		p.setContent(content);
 		p.setUser(user);
+		p.setImage(img);
 		entityManager.persist(p);
 	}
 	
