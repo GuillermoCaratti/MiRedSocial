@@ -24,7 +24,6 @@ public class PostController {
 		p.setContent(content);
 		p.setUser(user);
 		p.setImage(img);
-		System.out.println("Creando " + p);
 		entityManager.persist(p);
 	}
 	

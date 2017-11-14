@@ -42,7 +42,6 @@ public class PostMb {
 	public void submitPost(){
 		try{
 			Image img = null;
-			System.out.println(content);
 			if(file != null && file.getSize() > 0 && file.getContentType().startsWith("image/")){
 				img = imgCntl.upload(file);
 			}
