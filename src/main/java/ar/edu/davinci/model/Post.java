@@ -3,6 +3,7 @@ package ar.edu.davinci.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,12 +28,18 @@ public class Post {
     @ManyToOne
     private User user;
     
-    @ManyToOne
+    @ManyToOne(fetch=FetchType.EAGER)
     private Image image;
 
     @NotNull
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
+
+	@Override
+	public String toString() {
+		return "Post [id=" + id + ", content=" + content + ", user=" + user + ", image=" + image + ", date=" + date
+				+ "]";
+	}
 
 	public int getId() {
 		return id;

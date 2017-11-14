@@ -9,7 +9,7 @@
 		Bienvenido a tu nueva red social
 	</ui:define>
 	<ui:define name="content">
-		<h:form enctype="multipart/form-data">
+		<h:form enctype="multipart/form-data" id="postForm">
 			<div class="panel panel-default">
 				<div class="panel-heading">
 					<h3 class="panel-title">Nuevo post</h3>
@@ -24,8 +24,8 @@
 					 
 					<h:commandLink styleClass="btn btn-primary"
 						action="#{postMb.submitPost}">
-			    	Publicar
-			    	
+			    		Publicar
+			    		
 					</h:commandLink>
 				</div>
 			</div>
@@ -45,7 +45,7 @@
 					</div>
 					<div class="panel-body">
 						<h:outputText value="#{post.content}" />
-						<h:graphicImage value="/image/#{post.image.path}" rendered="#{post.image != null}" />
+						<img src="/image/#{post.image.path}"/>
 						<ul class="list-group">
 							<ui:repeat var="comment" value="#{commentMb.listByPost(post)}">
 								<li class="list-group-item">

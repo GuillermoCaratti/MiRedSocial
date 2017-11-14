@@ -6,6 +6,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.Part;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -17,6 +18,10 @@ import ar.edu.davinci.model.Image;
 import ar.edu.davinci.model.Post;
 
 @Named
+@MultipartConfig(location="/tmp",
+	fileSizeThreshold=1024*1024, 
+	maxFileSize=1024*1024*5,
+	maxRequestSize=1024*1024*5*5)
 public class PostMb {
 	
 	@Inject
@@ -28,19 +33,17 @@ public class PostMb {
 	@Inject 
 	private ImageController imgCntl;
 	
-	
-	
 	private Part file;
 	
     @NotNull
     @Size(min=2,max=255)
 	private String content;
   
-	
 	public void submitPost(){
 		try{
 			Image img = null;
-			if(file != null){
+			System.out.println(content);
+			if(file != null && file.getSize() > 0 && file.getContentType().startsWith("image/")){
 				img = imgCntl.upload(file);
 			}
 			postCntl.addPost(authMb.getUser(), content,img);

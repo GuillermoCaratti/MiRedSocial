@@ -22,7 +22,7 @@ public class ImageController {
 	@PersistenceContext
 	private EntityManager em;
 	
-	private static final File UPLOAD_DIR = new File("/home/gcaratti/tmp/redsocial/imgs/");
+	private static final File UPLOAD_DIR = new File("D:/storage/images/");
 	
 	private static final char [] CHARS = "abcdefghijklmnopqrstwxyz0123456789".toCharArray();
 	
